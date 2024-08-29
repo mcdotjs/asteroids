@@ -35,6 +35,11 @@ def main():
         for item in asteroids:
             item.update(dt)
         for item in asteroids:
+            if item.is_colliding(player):
+                print("Game over!")
+                sys.exit()
+                # pygame.quit()
+        for item in asteroids:
             item.draw(screen)
         pygame.display.flip()
 
