@@ -1,6 +1,8 @@
 import pygame
 from constants import *
 from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 
 
 def main():
@@ -13,6 +15,12 @@ def main():
     drawable = pygame.sprite.Group()
     Player.containers = (updatable, drawable)
 
+    asteroids = pygame.sprite.Group()
+    Asteroid.containers = (updatable, drawable, asteroids)
+
+    AsteroidField.containers = updatable
+
+    asteroid_field = AsteroidField()
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
     pygame.display.set_caption("Mirkova prva hra")
     while True:
@@ -23,6 +31,10 @@ def main():
         for item in updatable:
             item.update(dt)
         for item in drawable:
+            item.draw(screen)
+        for item in asteroids:
+            item.update(dt)
+        for item in asteroids:
             item.draw(screen)
         pygame.display.flip()
 
