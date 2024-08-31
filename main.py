@@ -45,7 +45,7 @@ def main():
                 # pygame.quit()
             for s in shots:
                 if item.is_colliding(s):
-                    item.kill()
+                    item.split()
                     s.kill()
         for item in asteroids:
             item.draw(screen)
